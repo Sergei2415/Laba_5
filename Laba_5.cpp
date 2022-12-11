@@ -1,20 +1,18 @@
 ﻿// Laba_5.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 #include <iostream>
+#include <windows.h>
 using namespace std;
-
 struct date_of_registration
 {
 	int day = 1, mounth = 12, year = 2022;
 };
-
 struct car_number
 {
 	char series[6];
 	int region;
 	char country[3];
 };
-
 struct car
 {
 	struct date_of_registration date;
@@ -24,7 +22,6 @@ struct car
 	struct car_number number;
 
 };
-
 void machine_data(car* cars, int counter)
 {
 	if (counter != 0)
@@ -33,7 +30,6 @@ void machine_data(car* cars, int counter)
 		for (int i = 0; i < counter; i++)
 		{
 			cout << "Машина номер - " << i << "\n";
-
 			cout << "Дата регистрации: " << cars[i].date.day << "." << cars[i].date.mounth << "." << cars[i].date.year << "\n";
 			cout << "Марка автомобиля: " << cars[i].stamp << "\n";
 			cout << "Год выпуска автомобиля: " << cars[i].year_of_release << "\n";
@@ -44,9 +40,7 @@ void machine_data(car* cars, int counter)
 	}
 	else
 		cout << "Список пуст!\n\n";
-
 }
-
 void car_registration(car* cars, int& counter)
 {
 	if (counter > 49)
@@ -54,7 +48,8 @@ void car_registration(car* cars, int& counter)
 		cout << "Превышена память, выделенная базой данных. Для решения проблемы удалите записи из базы или увеличьте ее вместительность.";
 		return;
 	}
-
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	struct car elem;
 	cout << "Введите день регистрации:";
 	cin >> elem.date.day;
@@ -78,7 +73,6 @@ void car_registration(car* cars, int& counter)
 	counter += 1;
 	cout << "\n";
 }
-
 int* find_a_car(car* cars, int& counter)
 {
 	int act, count = 0;
@@ -104,10 +98,8 @@ int* find_a_car(car* cars, int& counter)
 			dates[count] = '*';
 			return dates;
 		}
-
 		cout << "\n";
 		cout << "Машина номер - " << i << "\n";
-
 		cout << "Дата регистрации: " << cars[i].date.day << "." << cars[i].date.mounth << "." << cars[i].date.year << "\n";
 		cout << "Марка автомобиля: " << cars[i].stamp << "\n";
 		cout << "Год выпуска автомобиля: " << cars[i].year_of_release << "\n";
@@ -131,7 +123,6 @@ int* find_a_car(car* cars, int& counter)
 			if (cars[i].date.day == date && cars[i].date.mounth == mounth && cars[i].date.year == year)
 			{
 				cout << "Машина номер - " << i << "\n";
-
 				cout << "Дата регистрации: " << cars[i].date.day << "." << cars[i].date.mounth << "." << cars[i].date.year << "\n";
 				cout << "Марка автомобиля: " << cars[i].stamp << "\n";
 				cout << "Год выпуска автомобиля: " << cars[i].year_of_release << "\n";
@@ -154,11 +145,9 @@ int* find_a_car(car* cars, int& counter)
 			{
 				value2 += cars[i].stamp;
 			}
-
 			if (value == value2)
 			{
 				cout << "Машина номер - " << i << "\n";
-
 				cout << "Дата регистрации: " << cars[i].date.day << "." << cars[i].date.mounth << "." << cars[i].date.year << "\n";
 				cout << "Марка автомобиля: " << cars[i].stamp << "\n";
 				cout << "Год выпуска автомобиля: " << cars[i].year_of_release << "\n";
@@ -167,7 +156,6 @@ int* find_a_car(car* cars, int& counter)
 				dates[count] = i;
 				count += 1;
 			}
-
 			value2 = "";
 		}
 	}
@@ -182,7 +170,6 @@ int* find_a_car(car* cars, int& counter)
 			if (cars[i].year_of_release == value)
 			{
 				cout << "Машина номер - " << i << "\n";
-
 				cout << "Дата регистрации: " << cars[i].date.day << "." << cars[i].date.mounth << "." << cars[i].date.year << "\n";
 				cout << "Марка автомобиля: " << cars[i].stamp << "\n";
 				cout << "Год выпуска автомобиля: " << cars[i].year_of_release << "\n";
@@ -205,11 +192,9 @@ int* find_a_car(car* cars, int& counter)
 			{
 				value2 += cars[i].colour;
 			}
-
 			if (value == value2)
 			{
 				cout << "Машина номер - " << i << "\n";
-
 				cout << "Дата регистрации: " << cars[i].date.day << "." << cars[i].date.mounth << "." << cars[i].date.year << "\n";
 				cout << "Марка автомобиля: " << cars[i].stamp << "\n";
 				cout << "Год выпуска автомобиля: " << cars[i].year_of_release << "\n";
@@ -218,7 +203,6 @@ int* find_a_car(car* cars, int& counter)
 				dates[count] = i;
 				count += 1;
 			}
-
 			value2 = "";
 		}
 	}
@@ -234,11 +218,9 @@ int* find_a_car(car* cars, int& counter)
 			{
 				value2 += cars[i].number.series[j];
 			}
-
 			if (value == value2)
 			{
 				cout << "Машина номер - " << i << "\n";
-
 				cout << "Дата регистрации: " << cars[i].date.day << "." << cars[i].date.mounth << "." << cars[i].date.year << "\n";
 				cout << "Марка автомобиля: " << cars[i].stamp << "\n";
 				cout << "Год выпуска автомобиля: " << cars[i].year_of_release << "\n";
@@ -247,7 +229,6 @@ int* find_a_car(car* cars, int& counter)
 				dates[count] = i;
 				count += 1;
 			}
-
 			value2 = "";
 		}
 	}
@@ -262,7 +243,6 @@ int* find_a_car(car* cars, int& counter)
 			if (cars[i].number.region == value)
 			{
 				cout << "Машина номер - " << i << "\n";
-
 				cout << "Дата регистрации: " << cars[i].date.day << "." << cars[i].date.mounth << "." << cars[i].date.year << "\n";
 				cout << "Марка автомобиля: " << cars[i].stamp << "\n";
 				cout << "Год выпуска автомобиля: " << cars[i].year_of_release << "\n";
@@ -285,11 +265,9 @@ int* find_a_car(car* cars, int& counter)
 			{
 				value2 += cars[i].number.country[j];
 			}
-
 			if (value == value2)
 			{
 				cout << "Машина номер - " << i << "\n";
-
 				cout << "Дата регистрации: " << cars[i].date.day << "." << cars[i].date.mounth << "." << cars[i].date.year << "\n";
 				cout << "Марка автомобиля: " << cars[i].stamp << "\n";
 				cout << "Год выпуска автомобиля: " << cars[i].year_of_release << "\n";
@@ -298,7 +276,6 @@ int* find_a_car(car* cars, int& counter)
 				dates[count] = i;
 				count += 1;
 			}
-
 			value2 = "";
 		}
 	}
@@ -309,13 +286,11 @@ int* find_a_car(car* cars, int& counter)
 		dates[count] = '*';
 		return dates;
 	}
-
 	if (count == 0)
 		cout << "Совпадений нет!\n";
 	dates[count] = '*';
 	return dates;
 }
-
 void removing_the_machine(car* cars, int& counter, int* mass_del)
 {
 	int choice;
@@ -332,7 +307,6 @@ void removing_the_machine(car* cars, int& counter, int* mass_del)
 			{
 				cars[j] = cars[j + 1];
 			}
-
 			i += 1;
 			counter -= 1;
 		}
@@ -347,7 +321,6 @@ void removing_the_machine(car* cars, int& counter, int* mass_del)
 		removing_the_machine(cars, counter, mass_del);
 	}
 }
-
 void Menu(car* cars, int& counter)
 {
 	int action;
@@ -359,7 +332,6 @@ void Menu(car* cars, int& counter)
 	cout << "5 - Завершить работу программы\n";
 	cout << "Для выбора действия напишите его номер:\n";
 	cin >> action;
-
 	switch (action)
 	{
 	case 1:
@@ -387,7 +359,6 @@ void Menu(car* cars, int& counter)
 		break;
 	}
 }
-
 int main()
 {
 	setlocale(LC_ALL, "Russian");
