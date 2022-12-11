@@ -18,9 +18,9 @@ struct car_number
 struct car
 {
 	struct date_of_registration date;
-	char stamp;
+	char stamp[50];
 	int year_of_release;
-	char colour;
+	char colour[20];
 	struct car_number number;
 
 };
@@ -394,5 +394,6 @@ int main()
 	car* cars = new car[50];
 	int counter = 0;
 	Menu(cars, counter);
+	delete[] cars;
 
 }
